@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Domain List{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% for domain in domains %}
+    <h3>VM name: {{ domain.name() }}</h3>
+    <ul>
+        <li>ID: {{ domain.ID() }}</li>
+        <li>OS: {{ domain.OSType() }}</li>
+        <li>CPU: {{ domain.getCPUStats(True) }}</li>
+        <li>Memory used: {{ domain.memoryStats() }}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}
