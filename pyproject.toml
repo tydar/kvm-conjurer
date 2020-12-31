@@ -5,7 +5,7 @@ description = "libvirt API web frontend"
 authors = ["Tyler Darnell"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 Flask = "^1.1.2"
 libvirt-python = "^6.10.0"
 pytest = "^6.2.1"
