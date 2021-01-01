@@ -34,6 +34,11 @@ def client(app):
 def runner(app):
     return app.test_cli_runner()
 
+"""
+Create a wrapper class to be passed by pytest fixture
+that implements auth for testing purposes in a DRY way
+"""
+
 class AuthActions(object):
     def __init__(self, client):
         self._client = client
@@ -46,3 +51,7 @@ class AuthActions(object):
 
     def logout(self):
         return self._client.get('/auth/logout')
+
+@pytest.fixture
+def auth(client):
+    return AuthActions(client)

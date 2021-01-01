@@ -49,6 +49,10 @@ def create_app(test_config=None):
 
         return str(domainNameList)
 
+    @app.route('/')
+    def temporary_index():
+        return 'Temporary index for test validation.'
+
     from . import db
     db.init_app(app)
 
