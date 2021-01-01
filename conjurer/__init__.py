@@ -24,6 +24,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    @app.route('/hello')
+    def hello_world():
+        return 'Hello, World!'
+
     # page that should list libvirt VMs
     @app.route('/list')
     def list_libvirt_domains():
