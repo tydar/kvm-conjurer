@@ -10,7 +10,8 @@ test-job:
       - debian
   stage: test
   cache:
-      - tests/images/
+      paths:
+          - tests/images/*.qcow2
   before_script:
       - poetry update
       - poetry install
