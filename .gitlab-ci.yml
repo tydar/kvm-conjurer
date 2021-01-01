@@ -10,6 +10,7 @@ test-job1:
       - debian
   stage: test
   before_script:
+      - poetry update
       - poetry install
   script:
       - poetry run pytest
