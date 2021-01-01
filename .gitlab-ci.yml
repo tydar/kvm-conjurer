@@ -5,10 +5,12 @@ build-job:
   script:
       - poetry build
 
-test-job1:
+test-job:
   tags:
       - debian
   stage: test
+  cache:
+      - tests/images/
   before_script:
       - poetry update
       - poetry install

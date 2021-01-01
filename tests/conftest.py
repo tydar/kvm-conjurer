@@ -1,5 +1,6 @@
 import os
 import tempfile
+import requests
 
 import pytest
 from conjurer import create_app
@@ -7,6 +8,14 @@ from conjurer.db import get_db, init_db
 
 with open(os.path.join(os.path.dirname(__file__), 'data.sql'), 'rb') as f:
     _data_sql = f.read().decode('utf8')
+
+# Get a debian cloud image to use to test libvirt
+if not os.path.exists(os.path.join(os.path.dirname(__file__), 'images/debian10.qcow2')):
+    image_url = 'https://cloud.debian.org/images/cloud/buster/20201214-484/debian-10-generic-amd64-20201214-484.qcow2'
+    r = requests.get(image_url)
+
+    with open(os.path.join(os.path.dirname(__file__), 'images/debian10.qcow2'), 'wb') as f:
+        f.write(r.content)
 
 @pytest.fixture
 def app():
