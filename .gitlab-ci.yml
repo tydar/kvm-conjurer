@@ -4,6 +4,9 @@ build-job:
   stage: build
   script:
       - poetry build
+  artifacts:
+      paths:
+          - dist/*.whl
 
 test-job:
   tags:
