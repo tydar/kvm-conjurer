@@ -14,12 +14,16 @@ test-job:
   stage: test
   cache:
       paths:
+          # Avoid needing to burn 273 MB of network traffic to grab a new image each time
           - tests/images/*.qcow2
   before_script:
       - poetry update
       - poetry install
+      - bash tests/test-machines-up.sh
   script:
       - poetry run pytest
+  after_script:
+      - bash tests/test-machines-down.sh
 
 deploy-prod:
   stage: deploy
