@@ -139,3 +139,5 @@ cython_debug/
 
 # test images
 tests/images/*.qcow2
+tests/*.qcow2
+tests/*.img
