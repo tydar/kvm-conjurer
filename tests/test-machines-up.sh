@@ -19,13 +19,9 @@ qemu-img create -f qcow2 -F qcow2 -o backing_file=images/debian10.qcow2 test2.qc
 cloud-localds -v test-seed1.img cloud-init.cfg
 cloud-localds -v test-seed2.img cloud-init.cfg
 
-# Step 4: start default libvirt network
-virsh net-define /etc/libvirt/qemu/networks/default.xml
-virsh net-start default
+# Step 4: bring up VMs
 
-# Step 5: bring up VMs
-
-virt-install --name test1 \
+sudo virt-install --name test1 \
     --memory 1000 --vcpus 1 \
     --boot hd,menu=on \
     --disk path=test-seed1.img,device=cdrom \
@@ -35,7 +31,7 @@ virt-install --name test1 \
     --network network:default \
     --os-type=linux --os-variant=debian10
 
-virt-install --name test2 \
+sudo virt-install --name test2 \
     --memory 1000 --vcpus 1 \
     --boot hd,menu=on \
     --disk path=test-seed2.img,device=cdrom \
