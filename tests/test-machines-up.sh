@@ -20,7 +20,8 @@ cloud-localds -v test-seed1.img cloud-init.cfg
 cloud-localds -v test-seed2.img cloud-init.cfg
 
 # Step 4: start default libvirt network
-virsh net-autostart default
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+virsh net-start default
 
 # Step 5: bring up VMs
 
