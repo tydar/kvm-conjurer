@@ -21,7 +21,7 @@ test-job:
       - poetry install
       - bash tests/test-machines-up.sh
   script:
-      - poetry run pytest -r
+      - poetry run pytest -ra
   after_script:
       - bash tests/test-machines-down.sh
 
