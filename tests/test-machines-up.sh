@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## Pre-setup: find & cd to test directory
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd - P)
+
+cd "$parent_path"
+
 ## Step 1: Obtain (or detect cached) .qcow2 base image
 
 test -f images/debian10.qcow2 || wget -O images/debian10.qcow2 https://cloud.debian.org/images/cloud/buster/20201214-484/debian-10-generic-amd64-20201214-484.qcow2
